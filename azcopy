@@ -1,0 +1,36 @@
+O AzCopy é uma ferramenta de linha de comando poderosa para copiar dados de e para contas de armazenamento no Azure. Aqui está um guia básico para começar a usar o AzCopy:
+
+1. Instalação do AzCopy
+Primeiro, você precisa baixar e instalar o AzCopy. Você pode encontrar a versão mais recente aqui1.
+
+2. Autenticação
+Antes de usar o AzCopy, você precisa se autenticar. Use o comando abaixo para fazer login com sua conta do Azure:
+
+azcopy login
+
+3. Copiar Arquivos para o Azure
+Para copiar arquivos do seu computador local para um contêiner de blobs no Azure, use o comando azcopy copy:
+
+azcopy copy "caminho/local/do/arquivo" "https://<nome-da-conta>.blob.core.windows.net/<nome-do-conteiner>/<nome-do-blob>?<token-SAS>"
+
+Exemplo:
+
+azcopy copy "C:\meus-arquivos\arquivo.txt" "https://minhaconta.blob.core.windows.net/meucontainer/arquivo.txt?sv=2021-04-10&ss=b&srt=sco&sp=rwdlacupx&se=2022-04-11T00:00:00Z&st=2021-04-10T00:00:00Z&spr=https&sig=assinatura"
+
+4. Copiar Arquivos do Azure para o Local
+Para copiar arquivos de um contêiner de blobs no Azure para o seu computador local, use o comando:
+
+azcopy copy "https://<nome-da-conta>.blob.core.windows.net/<nome-do-conteiner>/<nome-do-blob>?<token-SAS>" "caminho/local/do/arquivo"
+
+Exemplo:
+
+azcopy copy "https://minhaconta.blob.core.windows.net/meucontainer/arquivo.txt?sv=2021-04-10&ss=b&srt=sco&sp=rwdlacupx&se=2022-04-11T00:00:00Z&st=2021-04-10T00:00:00Z&spr=https&sig=assinatura" "C:\meus-arquivos\arquivo.txt"
+
+5. Comandos Úteis
+Listar arquivos em um contêiner:
+azcopy list "https://<nome-da-conta>.blob.core.windows.net/<nome-do-conteiner>?<token-SAS>"
+
+Excluir arquivos:
+azcopy remove "https://<nome-da-conta>.blob.core.windows.net/<nome-do-conteiner>/<nome-do-blob>?<token-SAS>"
+
+Para mais detalhes e exemplos, você pode conferir a documentação oficial do AzCopy1.
